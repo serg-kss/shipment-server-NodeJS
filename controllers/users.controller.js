@@ -30,7 +30,7 @@ class UsersController{
 
    async auth(rec, res){
       try{
-         const auth = await Model.find({name: rec.body.name, password: rec.body.password});
+         const auth = await Model.find({login: rec.body.login, password: rec.body.password});
          res.json(auth);
       }catch(e){
          res.json({'error':'error'});
