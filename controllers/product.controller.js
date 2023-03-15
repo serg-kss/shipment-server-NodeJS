@@ -32,13 +32,26 @@ class ProductController{
       }     
    }
 
-   async auth(rec, res){
+   async changeProduct(rec, res){
       try{
-         const auth = await Model.find({login: rec.body.login, password: rec.body.password});
-         res.json(auth);
+         const product = await Model.updateOne(
+            {tyre_id: rec.body.id}, 
+            {
+               tyre_id: rec.body.tyre_id, 
+               brand: rec.body.brand, 
+               size: rec.body.size,
+               model: rec.body.model,
+               sl: rec.body.sl,
+               index_speed: rec.body.index_speed,
+               index_load: rec.body.index_load,
+               type: rec.body.type,
+               sezon: rec.body.sezon,
+               comment: rec.body.comment
+            });            
+         res.json(product);
       }catch(e){
          res.json({'error':'error'});
-      }     
+      }  
    }
 
 }
