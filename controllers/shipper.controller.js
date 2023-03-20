@@ -23,6 +23,29 @@ class ShipperController{
          res.json({'error':'error'});
       }     
    }
+
+   async changeShipper(rec, res){
+      try{
+         const shipper = await Model.updateOne(
+            {name: rec.body.key}, 
+            {
+               name: rec.body.name, 
+               address: rec.body.address, 
+            });            
+         res.json(shipper);
+      }catch(e){
+         res.json({'error':'error'});
+      }  
+   }
+
+   async deleteShipper(rec, res){
+      try{
+         await Model.deleteOne({name: rec.body.key})
+         res.json({deleteShipper: 'Ok'});
+      }catch(e){
+         res.json({deleteShipper: 'error'});
+      }
+   }
 }
 
 module.exports = new ShipperController()
