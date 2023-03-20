@@ -54,6 +54,14 @@ class ProductController{
       }  
    }
 
+   async deleteProduct(rec, res){
+      try{
+         const product = await Model.deleteOne({tyre_id: rec.body.id})
+         res.json(product);
+      }catch(e){
+         res.json({'error':'error'});
+      }
+   }
 }
 
 module.exports = new ProductController()
