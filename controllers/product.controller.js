@@ -62,6 +62,15 @@ class ProductController{
          res.json({'error':'error'});
       }
    }
+
+   async getProductSearch(rec, res){
+      try{
+         const some_product = await Model.find({tyre_id: rec.query.tyre_id});
+         res.json(some_product);
+      }catch(e){
+         res.json({'error':'error'});
+      }     
+   }
 }
 
 module.exports = new ProductController()

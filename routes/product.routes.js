@@ -7,5 +7,6 @@ router.post('/create-product', productController.createProduct)
 router.put('/change-product', productController.changeProduct)
 router.post('/delete-product', productController.deleteProduct)
 router.get('/get-products', productController.getProducts)
+router.get('/find-product', productController.getProductSearch)
 
 module.exports = router

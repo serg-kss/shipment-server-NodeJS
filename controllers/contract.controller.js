@@ -52,6 +52,15 @@ class ContractController{
          res.json({'error':'error'});
       }
    }
+
+   async getContractsSearch(rec, res){
+      try{
+         const some_contracts = await Model.find({shipper: rec.query.key});
+         res.json(some_contracts);
+      }catch(e){
+         res.json({'error':'error'});
+      }     
+   }
 }
 
 module.exports = new ContractController()
